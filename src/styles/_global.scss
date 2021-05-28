@@ -1,0 +1,73 @@
+@use "common" as *;
+@use "sass:map";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  @each $key, $value in $light-theme {
+    --#{"" + $key}: #{$value};
+  }
+}
+
+::selection {
+  @include var(background, selection);
+}
+
+body {
+  @include var(background, page-bg);
+
+  margin: 0;
+  font: #{$base-font-size} / 1 $sans-font;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+// Venders
+.ReactCollapse--collapse {
+  transition: height 0.35s ease-in-out;
+  transform: translateZ(0);
+}

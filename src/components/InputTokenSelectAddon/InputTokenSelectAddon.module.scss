@@ -1,0 +1,57 @@
+@use "../../styles/common" as *;
+
+.InputTokenSelectAddon {
+  position: relative;
+  margin-left: rhythm(1);
+  user-select: none;
+
+  &__label {
+    @include var(color, text-secondary);
+
+    display: block;
+    margin-bottom: rhythm(1);
+  }
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    height: rhythm(4);
+    cursor: pointer;
+  }
+
+  &__triggerArrow {
+    margin-left: rhythm(1);
+  }
+
+  &__menu {
+    @include var(background, white);
+    @include var(border, border, 1px solid);
+    @include var(box-shadow, shadow, 0 1px 6px);
+    @include dropdown(rhythm(1));
+
+    left: rhythm(-2);
+    padding-top: rhythm(1);
+    padding-bottom: rhythm(1);
+    border-radius: $border-radius;
+  }
+
+  &__menuItem {
+    min-width: rhythm(16);
+    padding: rhythm(1.5) rhythm(2);
+    cursor: pointer;
+
+    &.active {
+      @include var(background, input-bg--emphasize);
+    }
+  }
+
+  &.isOpen {
+    .InputTokenSelectAddon__triggerArrow {
+      transform: rotate(180deg);
+    }
+
+    .InputTokenSelectAddon__menu {
+      @include dropdown-open(0);
+    }
+  }
+}

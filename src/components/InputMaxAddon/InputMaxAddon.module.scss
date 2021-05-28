@@ -1,0 +1,11 @@
+@use "../../styles/common" as *;
+
+.InputMaxAddon {
+  @include var(color, text-secondary);
+  @include var(background, input-bg--emphasize);
+
+  height: rhythm(4);
+  padding-right: rhythm(1.5);
+  padding-left: rhythm(1.5);
+  border-radius: $border-radius;
+}

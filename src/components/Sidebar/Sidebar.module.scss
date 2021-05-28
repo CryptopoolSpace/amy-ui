@@ -1,0 +1,56 @@
+@use "../../styles/common" as *;
+
+.Sidebar {
+  @include var(background, sidebar-bg);
+  @include var(border-right, border, 1px solid);
+
+  width: 260px;
+  height: 100%;
+  padding: rhythm(3) rhythm(2);
+  user-select: none;
+
+  &__logo {
+    display: block;
+    margin-left: rhythm(1);
+
+    > svg {
+      display: block;
+    }
+  }
+
+  &__nav {
+    padding-top: rhythm(10);
+  }
+}
+
+.SidebarButton {
+  @include text(
+    (
+      variant: large,
+      color: text-secondary,
+      font-weight: bolder
+    )
+  );
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: rhythm(6);
+  padding-right: rhythm(2);
+  padding-left: rhythm(2);
+  border-radius: $border-radius;
+  transition: color 0.35s, background 0.35s;
+
+  &__icon {
+    margin-right: rhythm(1.25);
+  }
+
+  &.active {
+    @include var(color, text-primary);
+    @include var(background, page-bg);
+  }
+
+  &:hover {
+    @include var(color, text-primary);
+  }
+}

@@ -1,0 +1,13 @@
+@use "../../styles/common" as *;
+
+.ButtonGroup {
+  display: flex;
+
+  &__button:not(:last-child) {
+    margin-right: rhythm(2);
+  }
+
+  &.fluid &__button {
+    flex: 1;
+  }
+}

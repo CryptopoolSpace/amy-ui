@@ -1,0 +1,62 @@
+@use "../../styles/common" as *;
+
+.TokenPairSelect {
+  position: relative;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__triggerArrow {
+    margin-left: rhythm(1);
+  }
+
+  &__menu {
+    @include var(background, white);
+    @include var(border, border, 1px solid);
+    @include var(box-shadow, shadow, 0 1px 6px);
+    @include dropdown;
+
+    left: 0;
+    display: flex;
+    user-select: none;
+    border-radius: $border-radius;
+  }
+
+  &__column {
+    padding-top: rhythm(1);
+    padding-bottom: rhythm(1);
+
+    &:first-child {
+      @include var(border-right, border, 1px solid);
+    }
+  }
+
+  &__menuItem {
+    min-width: rhythm(16);
+    padding: rhythm(1.5) rhythm(2);
+    cursor: pointer;
+
+    &.active {
+      @include var(background, input-bg--emphasize);
+    }
+
+    &.disabled {
+      color: gray;
+      cursor: not-allowed;
+    }
+  }
+
+  &.isOpen {
+    .TokenPairSelect__triggerArrow {
+      transform: rotate(180deg);
+    }
+
+    .TokenPairSelect__menu {
+      @include dropdown-open;
+    }
+  }
+}

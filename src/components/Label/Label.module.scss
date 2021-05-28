@@ -1,0 +1,26 @@
+@use "../../styles/common" as *;
+
+.Label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: rhythm(3.5);
+  padding-right: rhythm(1);
+  padding-left: rhythm(1);
+  user-select: none;
+  border-radius: $border-radius;
+
+  &__icon {
+    margin-right: rhythm(0.25);
+  }
+
+  &.green {
+    @include var(color, green-primary);
+    @include var(background, green-tertiary);
+  }
+
+  &.red {
+    @include var(color, red-primary);
+    @include var(background, red-tertiary);
+  }
+}

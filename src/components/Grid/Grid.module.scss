@@ -1,0 +1,17 @@
+@use "../../styles/common" as *;
+
+.Grid {
+  flex-grow: 1;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+
+  &.primary {
+    flex-basis: 66%;
+    max-width: 784px;
+  }
+
+  &.secondary {
+    flex-basis: 34%;
+    max-width: 432px;
+  }
+}

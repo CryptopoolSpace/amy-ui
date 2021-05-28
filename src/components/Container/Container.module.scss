@@ -1,0 +1,16 @@
+@use "../../styles/common" as *;
+
+.Container {
+  min-width: 1248px; // [TODO]
+  max-width: 1248px;
+  padding-right: $gutter-width;
+  padding-left: $gutter-width;
+  margin-right: auto;
+  margin-left: auto;
+
+  &__row {
+    display: flex;
+    margin-right: -$gutter-width / 2;
+    margin-left: -$gutter-width / 2;
+  }
+}

@@ -1,0 +1,128 @@
+@use "../../styles/common" as *;
+
+.Button {
+  @include text(
+    (
+      variant: "large",
+      font-weight: bolder
+    )
+  );
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: rhythm(2);
+  padding-left: rhythm(2);
+  user-select: none;
+  border-radius: 4px;
+
+  &:active {
+    opacity: 1;
+  }
+
+  // Size
+  &.medium {
+    height: rhythm(5);
+  }
+
+  &.large {
+    @include text(
+      (
+        variant: "h4"
+      )
+    );
+
+    height: rhythm(6);
+  }
+
+  // Color
+  &.primary {
+    @include var(color, white);
+    @include var(background, primary);
+
+    &:hover {
+      @include var(background, primary--hover);
+    }
+
+    &:active {
+      @include var(background, primary);
+    }
+  }
+
+  &.red {
+    @include var(color, white);
+    @include var(background, red-primary);
+
+    &:hover {
+      @include var(background, red-secondary);
+    }
+
+    &:active {
+      @include var(background, red-primary);
+    }
+  }
+
+  &.green {
+    @include var(color, white);
+    @include var(background, green-primary);
+
+    &:hover {
+      @include var(background, green-secondary);
+    }
+
+    &:active {
+      @include var(background, green-primary);
+    }
+  }
+
+  // Variant
+  &.ghost {
+    @include var(background, white);
+
+    border: 1px solid;
+
+    &.primary {
+      @include var(color, primary);
+
+      &:hover {
+        @include var(background, white);
+      }
+    }
+
+    &.red {
+      @include var(color, red-primary);
+
+      &:hover {
+        @include var(background, red-tertiary);
+      }
+
+      &:active {
+        @include var(background, white);
+      }
+    }
+
+    &.green {
+      @include var(color, green-primary);
+
+      &:hover {
+        @include var(background, green-tertiary);
+      }
+
+      &:active {
+        @include var(background, white);
+      }
+    }
+  }
+
+  // Fluid
+  &.fluid {
+    display: flex;
+    width: 100%;
+  }
+
+  // Disabled
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,9 @@
+@use "../../styles/common" as *;
+
+.MainNavigationBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: rhythm(3);
+  padding-bottom: rhythm(4);
+}

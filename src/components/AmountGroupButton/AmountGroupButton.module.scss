@@ -1,0 +1,44 @@
+@use "../../styles/common" as *;
+
+.AmountGroupButton {
+  @include text(
+    (
+      variant: "medium"
+    )
+  );
+
+  display: flex;
+  margin-top: rhythm(1.5);
+  margin-bottom: rhythm(3);
+
+  &__button {
+    @include var(color, text-secondary);
+    @include var(background, input-bg);
+    @include var(border, border, 1px solid);
+
+    flex: 1 1 25%;
+    height: rhythm(4);
+    transition: color 0.35s, background 0.35s;
+
+    &:hover {
+      @include var(color, text-primary);
+    }
+
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+
+    &:not(:last-child) {
+      border-right: none;
+    }
+
+    &.active {
+      @include var(color, text-primary);
+      @include var(background, input-bg--emphasize);
+    }
+  }
+}

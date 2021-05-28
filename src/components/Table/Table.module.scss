@@ -1,0 +1,154 @@
+@use "../../styles/common" as *;
+
+$_table-gutter: rhythm(1.5);
+
+.Table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  th {
+    @include var(color, text-secondary);
+    @include var(background, thead-bg);
+    @include text(
+      (
+        variant: medium,
+        font-weight: bolder,
+        text-align: left
+      )
+    );
+
+    height: rhythm(6);
+    padding: 0 $_table-gutter;
+
+    &:first-child {
+      padding-left: $_table-gutter * 2;
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &:last-child {
+      padding-right: $_table-gutter * 2;
+      text-align: right;
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+  }
+
+  td {
+    @include var(color, text-secondary);
+
+    height: rhythm(7);
+    padding: 0 $_table-gutter;
+
+    &:first-child {
+      padding-left: $_table-gutter * 2;
+    }
+
+    &:last-child {
+      padding-right: $_table-gutter * 2;
+    }
+  }
+}
+
+.expandedRow:not(:last-child) {
+  @include var(background, expanded-row-bg);
+
+  height: 1px;
+  transition: background 0.35s;
+
+  &.isOpen {
+    background: transparent;
+  }
+}
+
+.expandedCell {
+  height: auto !important;
+  padding: 0 !important;
+  vertical-align: top;
+}
+
+.tableTooltipIcon {
+  position: absolute;
+  margin-left: rhythm(1);
+}
+
+.TableButtonGroupCell {
+  text-align: right;
+}
+
+.StatusBar {
+  @include var(background, status-bar-bg);
+
+  display: flex;
+  width: 180px;
+  min-width: 180px;
+  height: rhythm(1);
+  border-radius: $border-radius;
+
+  &__userPosition {
+    @include var(background, primary);
+
+    flex: none;
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+
+  &__availableLiquidity {
+    @include var(background, green-primary);
+
+    flex: none;
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+}
+
+.TableButton {
+  @include var(color, text-secondary);
+  @include var(background, expanded-row-bg);
+  @include text(
+    (
+      variant: medium,
+      font-weight: bolder
+    )
+  );
+
+  height: rhythm(3.5);
+  padding-right: rhythm(1.5);
+  padding-left: rhythm(1.5);
+  border-radius: $border-radius;
+
+  &:not(:last-child) {
+    margin-right: rhythm(2);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &__triggerDecorator {
+    display: none;
+  }
+
+  &--expandTrigger {
+    &.isExpanded {
+      position: relative;
+      border-radius: $border-radius $border-radius 0 0;
+
+      &::after {
+        @include var(background, expanded-row-bg);
+
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        height: rhythm(1.75);
+        content: "";
+      }
+    }
+  }
+}
+
+.APRLabel {
+  &:not(:last-child) {
+    margin-right: rhythm(1);
+  }
+}

@@ -1,0 +1,14 @@
+@use "../../styles/common" as *;
+
+.Panel {
+  @include var(background, white);
+  @include var(box-shadow, shadow, 0 1px 3px 0);
+
+  padding: rhythm(3) rhythm(2);
+  margin-top: rhythm(3);
+  border-radius: $border-radius--large;
+
+  &.compact {
+    padding: rhythm(2);
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "no-descending-specificity": null
+  },
+  "extends": [
+    "@p233/stylelint-config-scss",
+    "@p233/stylelint-config-scss/order-bootstrap",
+    "@p233/stylelint-config-scss/no-prefixes"
+  ]
+}

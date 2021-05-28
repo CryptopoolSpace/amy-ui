@@ -1,0 +1,80 @@
+@use "../../styles/common" as *;
+
+.InputBoxLabel {
+  margin-bottom: rhythm(1);
+}
+
+.InputBox {
+  @include var(background, input-bg);
+  @include var(box-shadow, border, inset 0 0 0 1px);
+
+  display: flex;
+  align-items: flex-end;
+  padding: rhythm(2) rhythm(1) rhythm(1) rhythm(1);
+  border-radius: $border-radius;
+
+  &__left {
+    margin-right: rhythm(1);
+  }
+
+  &__right {
+    flex: 1;
+  }
+
+  &__description {
+    padding: 0 rhythm(1);
+    margin-bottom: rhythm(1);
+    text-align: right;
+  }
+
+  &__inputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: rhythm(4);
+    cursor: text;
+  }
+
+  &__inputContainerBG {
+    @include var(background, white);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    border-radius: $border-radius;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+
+  &__input {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    height: 100%;
+    padding: 0 rhythm(1);
+    text-align: right;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  &__inputContainer:hover > &__inputContainerBG,
+  &__input:focus ~ &__inputContainerBG {
+    opacity: 1;
+  }
+
+  &__unit {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    padding-right: rhythm(1);
+  }
+
+  &.compact {
+    padding: rhythm(1);
+  }
+}

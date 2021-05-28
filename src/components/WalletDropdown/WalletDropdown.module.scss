@@ -1,0 +1,73 @@
+@use "../../styles/common" as *;
+
+@keyframes connecting {
+  0% {
+    @include var(background, green-primary);
+  }
+
+  100% {
+    @include var(background, red-primary);
+  }
+}
+
+.WalletDropdown {
+  position: relative;
+  display: inline-flex;
+
+  &__indicator {
+    width: rhythm(2);
+    height: rhythm(2);
+    margin-right: rhythm(1);
+    border-radius: 50%;
+
+    &.connected {
+      @include var(background, green-primary);
+    }
+
+    &.disconnected {
+      @include var(background, red-primary);
+    }
+
+    &.connecting {
+      animation: connecting 0.35s steps(2, jump-none) alternate infinite;
+    }
+  }
+
+  &__menu {
+    @include var(background, white);
+    @include var(box-shadow, shadow, 0 1px 3px 0);
+    @include dropdown;
+
+    right: 0;
+    width: 100%;
+    padding-top: rhythm(1);
+    padding-bottom: rhythm(1);
+    user-select: none;
+    border-radius: $border-radius;
+  }
+
+  &.isOpen {
+    > .WalletDropdown__menu {
+      @include dropdown-open;
+    }
+  }
+}
+
+.WalletDropdownMenuItem {
+  @include text(
+    (
+      color: "text-secondary",
+      text-align: left
+    )
+  );
+
+  min-width: 160px;
+  height: rhythm(5);
+  padding-right: rhythm(2);
+  padding-left: rhythm(2);
+  white-space: nowrap;
+
+  &:hover {
+    @include var(background, page-bg);
+  }
+}

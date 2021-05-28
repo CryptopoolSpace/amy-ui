@@ -1,0 +1,33 @@
+@use "../../styles/common" as *;
+
+.NumberInput {
+  @include var(background, input-bg);
+  @include var(box-shadow, border, inset 0 0 0 1px);
+
+  display: flex;
+  align-items: flex-end;
+  width: min-content;
+  padding: rhythm(1) rhythm(2);
+  border-radius: 4px;
+
+  &__inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 rhythm(1);
+  }
+
+  &__input {
+    flex: 1 1 22px;
+    width: 22px;
+    padding-right: 2px;
+    text-align: right;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  &__unit {
+    flex: none;
+  }
+}

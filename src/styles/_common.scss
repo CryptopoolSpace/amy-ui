@@ -1,0 +1,110 @@
+@use "sass:map";
+@use "sass:list";
+@use "~modularscale-sass/stylesheets/modularscale" as * with (
+  $modularscale: (base: 16px, ratio: 1.125)
+);
+
+// ---------------------
+// Settings
+// ---------------------
+
+// Themes and Color Pattern
+$light-theme: (
+  white: #fff,
+  primary: #38707e,
+  primary--hover: lighten(#38707e, 5%),
+  red-primary: #ee634c,
+  red-secondary: lighten(#ee634c, 5%),
+  red-tertiary: lighten(#ee634c, 36%),
+  green-primary: #45b9aa,
+  green-secondary: lighten(#45b9aa, 5%),
+  green-tertiary: lighten(#45b9aa, 46%),
+  text-primary: #202636,
+  text-secondary: #455b59,
+  text-tertiary: #839290,
+  page-bg: #f6f9fa,
+  sidebar-bg: #e1ebec,
+  thead-bg: #e1ebec,
+  status-bar-bg: #e0e6e7,
+  expanded-row-bg: #f0f5f6,
+  input-bg: #f6f9fa,
+  input-bg--emphasize: darken(#f6f9fa, 4%),
+  border: #cfd8d9,
+  row-border: #eef4f4,
+  shadow: #e1ebec,
+  selection: #ece2e1
+);
+
+// $dark-theme: ();
+
+// Fonts
+$base-font-size: 16px;
+$mobile-font-size: 14px;
+$serif-font: "Roboto Slab", serif;
+$sans-font: "Source Sans Pro", sans-serif;
+$font-size-map: (
+  h1: 6 5,
+  h2: 4 4,
+  h3: 2 4,
+  h4: 1 3,
+  large: 0 3,
+  medium: -1 2,
+  small: -2 2
+);
+
+// Radius
+$border-radius: 4px;
+$border-radius--large: 8px;
+
+// Grids
+$gutter-width: 32px;
+$mobile-gutter-width: 24px;
+
+// ---------------------
+// Functions
+// ---------------------
+
+@function rhythm($value) {
+  @return $value * 8px;
+}
+
+// ---------------------
+// Mixins
+// ---------------------
+
+@mixin var($property, $value, $addon-before: null, $addon-after: null) {
+  #{$property}: $addon-before map.get($light-theme, $value) $addon-after;
+  #{$property}: $addon-before var(--#{$value}) $addon-after;
+}
+
+@mixin text($options) {
+  @each $property, $value in $options {
+    @if $property == "color" {
+      @include var(color, $value);
+    } @else if $property == "variant" {
+      $font-size-entry: map.get($font-size-map, $value);
+
+      font-size: ms(list.nth($font-size-entry, 1));
+      line-height: rhythm(list.nth($font-size-entry, 2));
+    } @else {
+      #{$property}: $value;
+    }
+  }
+}
+
+@mixin dropdown($offset: rhythm(2)) {
+  position: absolute;
+  top: 100%;
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.35s, opacity 0.35s, transform 0.35s;
+  transform: translateY(#{$offset});
+}
+
+@mixin dropdown-open($offset: rhythm(1)) {
+  z-index: 10;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(#{$offset});
+}

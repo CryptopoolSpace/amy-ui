@@ -1,0 +1,15 @@
+@use "../../styles/common" as *;
+
+.Layout {
+  display: flex;
+  min-height: 100vh;
+
+  &__sidebar {
+    flex: none;
+    width: min-content;
+  }
+
+  &__main {
+    flex: 1;
+  }
+}

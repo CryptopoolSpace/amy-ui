@@ -1,0 +1,47 @@
+@use "../../styles/common" as *;
+
+.PositionAccordion {
+  display: block;
+}
+
+.PositionAccordionItem {
+  padding-top: rhythm(1);
+
+  &:not(:last-child) {
+    @include var(border-bottom, border, 1px solid);
+
+    padding-bottom: rhythm(1);
+  }
+}
+
+.PositionAccordionTrigger {
+  cursor: pointer;
+  user-select: none;
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__rowItem {
+    margin-right: rhythm(1);
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+  &__arrow {
+    margin-left: auto;
+
+    &.active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.PositionAccordionBody {
+  &__buttonGroup {
+    padding-top: rhythm(1);
+  }
+}

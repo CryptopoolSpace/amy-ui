@@ -1,0 +1,46 @@
+@use "../../styles/common" as *;
+
+.Tooltip {
+  position: relative;
+  display: inline-flex;
+
+  &__tip {
+    @include var(color, text-primary);
+    @include var(background, white);
+    @include var(box-shadow, shadow, 0 0 4px 0);
+
+    position: absolute;
+    bottom: rhythm(3.5);
+    left: 50%;
+    z-index: 0;
+    width: 240px;
+    padding: rhythm(2);
+    font-weight: normal;
+    visibility: hidden;
+    border-radius: $border-radius;
+    opacity: 0;
+    transition: visibility 0.35s, opacity 0.35s, transform 0.35s;
+    transform: translate(-50%, #{rhythm(1)});
+
+    &::after {
+      @include var(border-color, white, null, transparent transparent transparent);
+
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      content: "";
+      border-style: solid;
+      border-width: rhythm(1);
+      transform: translate(-50%);
+    }
+  }
+
+  &.isOpen &__tip {
+    z-index: 10;
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
